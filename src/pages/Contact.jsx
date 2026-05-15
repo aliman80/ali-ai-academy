@@ -15,34 +15,7 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    fetch("https://formsubmit.co/ajax/aliman8@gmail.com", {
-      method: "POST",
-      headers: { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        ...formData,
-        _subject: `New Message from ${formData.name} - ${formData.subject}`,
-      })
-    })
-    .then(response => response.json())
-    .then(data => {
-      setIsSubmitting(false);
-      alert("Message sent successfully! We will get back to you soon.");
-      setFormData({ name: '', email: '', subject: '', message: '' }); // Clear form
-    })
-    .catch(error => {
-      setIsSubmitting(false);
-      alert("Something went wrong. Please try emailing directly.");
-    });
-  };
+  // Standard form submission will be used
 
   return (
     <div className="contact-page section bg-light">
@@ -89,7 +62,9 @@ const Contact = () => {
           
           <div className="card">
             <h3 className="mb-4">Send a Message</h3>
-            <form onSubmit={handleSubmit}>
+            <form action="https://formsubmit.co/aliman8@gmail.com" method="POST">
+              <input type="hidden" name="_subject" value="New Message from Dr. Ali AI Academy Contact Form" />
+              <input type="hidden" name="_next" value="https://aliman80.github.io/ali-ai-academy/#/contact" />
               <div className="form-group">
                 <label className="form-label">Name</label>
                 <input type="text" name="name" required className="form-control" onChange={handleChange} />
@@ -106,8 +81,8 @@ const Contact = () => {
                 <label className="form-label">Message</label>
                 <textarea name="message" required className="form-control" rows="5" onChange={handleChange}></textarea>
               </div>
-              <button type="submit" className="btn btn-primary" style={{width: '100%'}} disabled={isSubmitting}>
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+              <button type="submit" className="btn btn-primary" style={{width: '100%'}}>
+                Send Message
               </button>
             </form>
           </div>

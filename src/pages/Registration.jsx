@@ -23,37 +23,7 @@ const Registration = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    fetch("https://formsubmit.co/ajax/aliman8@gmail.com", {
-      method: "POST",
-      headers: { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        ...formData,
-        _subject: `New Course Registration: ${formData.course} by ${formData.fullName}`,
-      })
-    })
-    .then(response => response.json())
-    .then(data => {
-      setIsSubmitting(false);
-      alert("Thank you for registering! We will contact you on WhatsApp shortly.");
-      setFormData({
-        fullName: '', email: '', whatsapp: '', country: '', 
-        education: '', course: defaultCourse, experience: '', timing: '', message: ''
-      });
-    })
-    .catch(error => {
-      setIsSubmitting(false);
-      alert("Something went wrong. Please try emailing directly.");
-    });
-  };
+  // Standard HTML form submission
 
   return (
     <div className="registration-page section bg-light">
@@ -64,7 +34,9 @@ const Registration = () => {
             Please fill out this form to secure your spot. Our team will contact you regarding fee payment and schedule.
           </p>
 
-          <form onSubmit={handleSubmit}>
+          <form action="https://formsubmit.co/aliman8@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New Registration from Dr. Ali AI Academy" />
+            <input type="hidden" name="_next" value="https://aliman80.github.io/ali-ai-academy/#/register" />
             <div className="grid grid-cols-2">
               <div className="form-group">
                 <label className="form-label">Full Name *</label>
@@ -134,8 +106,8 @@ const Registration = () => {
               <textarea name="message" className="form-control" rows="4" onChange={handleChange}></textarea>
             </div>
 
-            <button type="submit" className="btn btn-primary mt-4" style={{width: '100%'}} disabled={isSubmitting}>
-              {isSubmitting ? 'Submitting...' : 'Submit Registration'}
+            <button type="submit" className="btn btn-primary mt-4" style={{width: '100%'}}>
+              Submit Registration
             </button>
           </form>
         </div>
