@@ -11,6 +11,7 @@ import Portal from './pages/Portal';
 import ResearchMentorship from './pages/ResearchMentorship';
 import Testimonials from './pages/Testimonials';
 import Contact from './pages/Contact';
+import ThankYou from './pages/ThankYou';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/research" element={<ResearchMentorship />} />
             <Route path="/testimonials" element={<Testimonials />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/thank-you" element={<ThankYou />} />
           </Routes>
         </main>
         <Footer />
