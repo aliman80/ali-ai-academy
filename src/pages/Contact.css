@@ -1,0 +1,26 @@
+.contact-layout {
+  gap: 4rem;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.info-item .icon {
+  color: var(--secondary-color);
+  margin-top: 0.2rem;
+}
+
+.info-item h4 {
+  margin-bottom: 0.25rem;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 900px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

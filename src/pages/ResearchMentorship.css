@@ -1,0 +1,32 @@
+.custom-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.service-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.icon-accent {
+  color: var(--accent-color);
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.text-sm {
+  font-size: 0.9rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 900px) {
+  .research-page .grid-cols-2 {
+    grid-template-columns: 1fr !important;
+  }
+}
