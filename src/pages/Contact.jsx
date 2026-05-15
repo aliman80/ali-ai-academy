@@ -62,9 +62,10 @@ const Contact = () => {
           
           <div className="card">
             <h3 className="mb-4">Send a Message</h3>
-            <form action="https://formsubmit.co/aliman8@gmail.com" method="POST">
-              <input type="hidden" name="_subject" value="New Message from Dr. Ali AI Academy Contact Form" />
-              <input type="hidden" name="_next" value="https://aliman80.github.io/ali-ai-academy/#/contact" />
+            <form action="https://api.web3forms.com/submit" method="POST">
+              <input type="hidden" name="access_key" value="240a4eb5-0c2c-4733-a618-f1af48cf3b6e" />
+              <input type="hidden" name="subject" value="New Message from Dr. Ali AI Academy Contact Form" />
+              <input type="hidden" name="redirect" value="https://aliman80.github.io/ali-ai-academy/#/contact" />
               <div className="form-group">
                 <label className="form-label">Name</label>
                 <input type="text" name="name" required className="form-control" onChange={handleChange} />

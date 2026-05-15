@@ -34,9 +34,10 @@ const Registration = () => {
             Please fill out this form to secure your spot. Our team will contact you regarding fee payment and schedule.
           </p>
 
-          <form action="https://formsubmit.co/aliman8@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="New Registration from Dr. Ali AI Academy" />
-            <input type="hidden" name="_next" value="https://aliman80.github.io/ali-ai-academy/#/register" />
+          <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="240a4eb5-0c2c-4733-a618-f1af48cf3b6e" />
+            <input type="hidden" name="subject" value="New Registration from Dr. Ali AI Academy" />
+            <input type="hidden" name="redirect" value="https://aliman80.github.io/ali-ai-academy/#/register" />
             <div className="grid grid-cols-2">
               <div className="form-group">
                 <label className="form-label">Full Name *</label>
