@@ -23,8 +23,8 @@ const ThankYou = () => {
               </div>
               <p className="mb-4 text-sm text-gray">Pay securely via Credit/Debit card using Stripe.</p>
               
-              <a href="#" className="btn btn-primary" style={{display: 'block', textAlign: 'center'}} onClick={(e) => { e.preventDefault(); alert("Please provide your Stripe Payment Link to update this button."); }}>
-                Pay via Stripe
+              <a href="#" className="btn btn-primary" style={{display: 'block', textAlign: 'center'}} onClick={(e) => { e.preventDefault(); alert("Stripe payment integration is coming soon! Please use the bank transfer method or contact us on WhatsApp."); }}>
+                Pay via Stripe (Coming Soon)
               </a>
             </div>
 
@@ -37,10 +37,10 @@ const ThankYou = () => {
               <p className="mb-4 text-sm text-gray">Direct bank transfer details.</p>
               
               <div className="bg-light p-4 rounded" style={{fontSize: '0.9rem', lineHeight: '1.6'}}>
-                <strong>Bank Name:</strong> [Your Bank Name]<br/>
+                <strong>Bank Name:</strong> Askari Bank<br/>
                 <strong>Account Title:</strong> Dr. Muhammad Ali<br/>
-                <strong>Account No:</strong> [Your Account Number]<br/>
-                <strong>IBAN:</strong> [Your IBAN]
+                <strong>Account No:</strong> 00240100029402<br/>
+                <strong>IBAN:</strong> PK62ASCM0000240100029402
               </div>
               
               <p className="mt-4 text-sm" style={{color: 'var(--primary-color)', fontWeight: '500'}}>
