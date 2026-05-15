@@ -23,11 +23,36 @@ const Registration = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // For now, just alert. Later this can be connected to Formspree or a backend DB.
-    alert("Thank you for registering! We will contact you on WhatsApp shortly.");
-    console.log("Form Submitted:", formData);
+    setIsSubmitting(true);
+    
+    fetch("https://formsubmit.co/ajax/aliman8@gmail.com", {
+      method: "POST",
+      headers: { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        ...formData,
+        _subject: `New Course Registration: ${formData.course} by ${formData.fullName}`,
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      setIsSubmitting(false);
+      alert("Thank you for registering! We will contact you on WhatsApp shortly.");
+      setFormData({
+        fullName: '', email: '', whatsapp: '', country: '', 
+        education: '', course: defaultCourse, experience: '', timing: '', message: ''
+      });
+    })
+    .catch(error => {
+      setIsSubmitting(false);
+      alert("Something went wrong. Please try emailing directly.");
+    });
   };
 
   return (
@@ -109,7 +134,9 @@ const Registration = () => {
               <textarea name="message" className="form-control" rows="4" onChange={handleChange}></textarea>
             </div>
 
-            <button type="submit" className="btn btn-primary mt-4" style={{width: '100%'}}>Submit Registration</button>
+            <button type="submit" className="btn btn-primary mt-4" style={{width: '100%'}} disabled={isSubmitting}>
+              {isSubmitting ? 'Submitting...' : 'Submit Registration'}
+            </button>
           </form>
         </div>
       </div>

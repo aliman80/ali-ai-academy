@@ -15,9 +15,33 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Message sent successfully! We will get back to you soon.");
+    setIsSubmitting(true);
+    
+    fetch("https://formsubmit.co/ajax/aliman8@gmail.com", {
+      method: "POST",
+      headers: { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        ...formData,
+        _subject: `New Message from ${formData.name} - ${formData.subject}`,
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      setIsSubmitting(false);
+      alert("Message sent successfully! We will get back to you soon.");
+      setFormData({ name: '', email: '', subject: '', message: '' }); // Clear form
+    })
+    .catch(error => {
+      setIsSubmitting(false);
+      alert("Something went wrong. Please try emailing directly.");
+    });
   };
 
   return (
@@ -82,7 +106,9 @@ const Contact = () => {
                 <label className="form-label">Message</label>
                 <textarea name="message" required className="form-control" rows="5" onChange={handleChange}></textarea>
               </div>
-              <button type="submit" className="btn btn-primary" style={{width: '100%'}}>Send Message</button>
+              <button type="submit" className="btn btn-primary" style={{width: '100%'}} disabled={isSubmitting}>
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+              </button>
             </form>
           </div>
         </div>
