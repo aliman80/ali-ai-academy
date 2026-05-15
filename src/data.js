@@ -2,9 +2,9 @@ export const siteData = {
   academyName: "Dr. Ali AI Academy",
   tagline: "Learn Practical AI, Machine Learning, and Research Skills from a PhD in AI",
   contact: {
-    email: "dr.ali@example.com",
-    whatsapp: "+92 300 0000000",
-    linkedin: "https://linkedin.com/in/drmuhammadali",
+    email: "aliman8@gmail.com",
+    whatsapp: "03219595531",
+    linkedin: "https://www.linkedin.com/in/YOUR_LINKEDIN", // Replace with your actual LinkedIn URL
     location: "Pakistan / Online Worldwide"
   },
   about: {
